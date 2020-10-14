@@ -11,30 +11,45 @@ public class GPSDataConverter {
     // skal omregnes til sekunder (som int): 8 * 60 * 60 + 52 * 60 + 26 
 	
 	private static int TIME_STARTINDEX = 11; // startindex for tidspunkt i timestr
-
+	private static int TIME_SLUTTINDEX = 13; // sluttindex for tidspunkt i timestr
+	private static int MIN_STARTINDEX = 14;  // startindex for tidspunkt i minstr
+	private static int MIN_SLUTTINDEX = 16;  // sluttindex for tidspunkt i minstr
+	private static int SEC_STARTINDEX = 17;  // startindex for tidspunkt i sekstr
+	private static int SEC_SLUTTINDEX = 19;  // sluttindex for tidspunkt i sekstr
+	
 	public static int toSeconds(String timestr) {
 		
 		int secs;
 		int hr, min, sec;
 		
-		// TODO
-		// OPPGAVE - START
+		String hrStr = timestr.substring(TIME_STARTINDEX, TIME_SLUTTINDEX);
+		String minStr = timestr.substring(MIN_STARTINDEX, MIN_SLUTTINDEX);
+		String secStr = timestr.substring(SEC_STARTINDEX, SEC_SLUTTINDEX);
 		
-		throw new UnsupportedOperationException(TODO.method());
-
-		// OPPGAVE - SLUTT
+		hr = Integer.parseInt(hrStr.trim());
+		min = Integer.parseInt(minStr.trim());
+		sec = Integer.parseInt(secStr.trim());
+		
+		
+		secs = (hr*60*60) + (min*60) + sec;
+		
+		return secs;
 		
 	}
-
+	
+	
 	public static GPSPoint convert(String timeStr, String latitudeStr, String longitudeStr, String elevationStr) {
 
 		GPSPoint gpspoint;
-
-		// TODO - START ;
 		
-		throw new UnsupportedOperationException(TODO.method());
-
-		// OPPGAVE - SLUTT ;
+		int time = toSeconds(timeStr);
+		double latitude = Double.parseDouble(latitudeStr);
+		double longitude = Double.parseDouble(longitudeStr);
+		double elevation = Double.parseDouble(elevationStr);
+		
+		gpspoint = new GPSPoint(time, latitude, longitude, elevation);
+		
+		return gpspoint;
 	    
 	}
 	

@@ -45,13 +45,13 @@ public class ShowSpeed extends EasyGraphics {
 
 		// get segments speeds from the GPS computer object		
 		double[] speeds = gpscomputer.speeds();
-
 		int x = MARGIN,y;
-
-		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
-	
-		// TODO - SLUTT
+		for(int i = 0; i < N; i++) {
+			drawLine(MARGIN+i*3, BARHEIGHT, MARGIN+i*3, BARHEIGHT);
+			
+		}
+		
+		
 	}
 }
